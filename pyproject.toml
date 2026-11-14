@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vi-te"
+version = "0.1.0"
+description = "VI main-chain extraction + pairwise transfer entropy (TE) bridge to causal emergence (Rosas 2020)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-learn>=1.2",
+    "pandas>=1.5",
+    "shapely>=2.0",
+    "matplotlib>=3.5",
+]
+authors = [{ name = "han-jiahe" }]
+
+[project.urls]
+Homepage = "https://github.com/han-jiahe/vi-te"
+
+# 注：vi/ 树（src/scripts/tools）不打包——其脚本自带仓库内 sys.path 定位，
+# 请在仓库根目录运行；vi_bridge.vi_te 对 vi 源码延迟导入，pip 安装后
+# 提供纯 numpy/sklearn 的 TE 估计与变换函数（te-emergence 依赖的正是这些）。
+[tool.setuptools]
+packages = ["mte", "vi_bridge"]
